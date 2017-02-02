@@ -8,40 +8,40 @@
 
 var App = {
   launch: function () {
-    App.getFirstName();
-    App.getLastName();
-    App.getWidth();
-    App.getLength();
+    App.getOrganizationName();
+    App.getSportingEvent();
+    App.getRows();
+    App.getSeats();
     App.getArea();
     App.getEstimate();
     App.displayExploreButtons();
     App.showExample();
   },
-  getFirstName: function () {
-    let answer = prompt("What is your first name", "Notorious");
+  getOrganizationName: function () {
+    let answer = prompt("Request the name of organization", "Notorious");
     if (answer != null) {
       // document.getElementById("first").innerHTML = answer;
-      $("#first").html(answer); // $ = jQuery object; in jQuery use # with id, . with class
+      $("#organization").html(answer); // $ = jQuery object; in jQuery use # with id, . with class
     }
   },
-  getLastName: function () {
-    let answer = prompt("What is your last name", "Nora");
+  getSportingEvent: function () {
+    let answer = prompt("The type of sporting event", "Football, Soccer, Volleyball");
     if (answer != null) {
       //document.getElementById("last").innerHTML = answer;
-      $("#last").html(answer);  // passing in the inner html with the  jQuery html() method 
+      $("#sporting").html(answer);  // passing in the inner html with the  jQuery html() method 
     }
   },
-  getWidth: function () {
-    let answer = prompt("What is the width of your farm in miles", 5);
+  getRows: function () {
+    let answer = prompt("The number of rows the organization wants to reserve", 5);
     if (answer != null) {
       //document.getElementById("width").innerHTML = answer;
-      $('#width').html(answer);   // either double or single tick marks designate strings
+      $('#rows').html(answer);   // either double or single tick marks designate strings
     }
   },
-  getLength: function () {
-    let answer = prompt("What is the length of your farm in miles", 5);
+  getSeats: function () {
+    let answer = prompt("The number of seats per row the organization wants to reserve", 5);
     if (answer != null) {
-      $('#length').html(answer);  // html method works as a getter and a setter
+      $('#seats').html(answer);  // html method works as a getter and a setter
     }
   },
   getArea: function () {
@@ -49,48 +49,48 @@ var App = {
     //let inputLength = parseFloat(document.getElementById("length").innerHTML);
     //let answer = Area.calculateArea(inputWidth, inputLength); // do some checks on the inputs
     //document.getElementById("area").innerHTML = answer;
-    let inputWidth = parseFloat($('#width').html());
-    let inputLength = parseFloat($('#length').html());
-    let answer = App.calculateArea(inputWidth, inputLength); // do some checks on the inputs
+    let inputRows = parseFloat($('#rows').html());
+    let inputSeats = parseFloat($('#seats').html());
+    let answer = App.calculateArea(inputRows, inputSeats); // do some checks on the inputs
     $("#area").html(answer);
     $(".displayText").css('display', 'inline-block');  //overwrites display: hidden to make it visible 
-    alert("You have about " + answer + " square miles.");
+    alert("You have about " + answer + " reserved seats.");
   },
-  calculateArea: function (givenWidth, givenLength) {
-    if (typeof givenWidth !== 'number' || typeof givenLength !== 'number') {
+  calculateArea: function (givenRows, givenSeats) {
+    if (typeof givenRows !== 'number' || typeof givenSeats !== 'number') {
       throw Error('The given argument is not a number');
     }
 
-    const minWidth = 1;
-    const minLength = 1;
-    const maxWidth = 100;
-    const maxLength = 100;
+    const minRows = 1;
+    const minSeats = 1;
+    const maxRows = 100;
+    const maxSeats = 100;
 
     // check the first argument.................
-    let width  // undefined
-    if (givenWidth < minWidth) {
-      width = minWidth;
+    let rows  // undefined
+    if (givenRows < minRows) {
+      rows = minRows;
     }
-    else if (givenWidth > maxWidth) {
-      width = maxWidth;
+    else if (givenRows > maxRows) {
+      rows = maxRows;
     }
     else {
-      width = givenWidth;
+      rows = givenRows;
     }
 
     //check the second argument ...................
-    if (givenLength < minLength) {
-      length = minLength;
+    if (givenSeats < minSeats) {
+      seats = minSeats;
     }
-    else if (givenLength > maxLength) {
-      length = maxLength;
+    else if (givenSeats > maxSeats) {
+      seats = maxSeats;
     }
     else {
-      length = givenLength;
+      seats = givenSeats;
     }
 
     // calculate the answer and store in a local variable so we can watch the value
-    let area = width * length;
+    let area = rows * seats;
     // return the result of our calculation to the calling function
     return area;
   },
@@ -101,7 +101,7 @@ var App = {
     else { ct = area }; // estimate 1 per square mile
     // document.getElementById("count").innerHTML = count;
     $("#count").html(ct);
-    alert("You could have about " + ct + " sheep.");
+    alert("You could have about " + ct + " reserved seats.");
     $("#count").css("color", "blue");
     $("#count").css("background-color", "yellow");
   },
@@ -119,7 +119,7 @@ var App = {
     imageElement.style.maxWidth = "90px";
     var displayElement = document.getElementById("displayPlace");
     displayElement.appendChild(imageElement);
-    document.getElementById("image" + icount).src = "59-images-of-baby-lamb-clipart-you-can-use-these-free-cliparts-for-sEfudv-clipart.jpg";
+    document.getElementById("image" + icount).src = "images.jpg";
   },
   displayExploreButtons: function () {
     $(".displayExploreButtons").css('display', 'block');  //overwrites display: hidden to make it visible 
